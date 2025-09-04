@@ -1,5 +1,7 @@
 package entidades;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,21 +9,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Livro {
+public class Emprestimo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    public String titulo;
+    public LocalDate dataEmprestimo;
 
-    public String autor;
-
-    public Integer anoPublicacao;
-
-    public String isbn;
+    public LocalDate dataDevolucao;
 
     @ManyToOne
-    public Editora editora;
-    
+    public Livro livro;
+
+    @ManyToOne
+    public Usuario usuario;
 
 }
